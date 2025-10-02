@@ -12,7 +12,7 @@ const fullLogPath = path.join(sdCardPath, logFileName);
 app.use(express.json())
 
 app.post('/dados', (req, res) => {
-    const { temperatura, umidade, id } = req.body;
+    const { id, Temperature, Umidade, BPM, SpO2 } = req.body;
 
     if (temperatura === undefined || umidade === undefined) {
         console.log('Recebida requisição com dados ausentes:', req.body);
@@ -24,7 +24,7 @@ app.post('/dados', (req, res) => {
     const timestamp = new Date().toISOString();
 
     // Formata a linha que será salva no arquivo (formato CSV: data,id,temp,umidade)
-    const logLine = `${timestamp},${id || 'desconhecido'},${temperatura},${umidade}\n`;
+    const logLine = `${timestamp},${id || 'desconhecido'},${Temperature},${Umidade}, ${BPM}, ${SpO2}\n`;
 
     fs.appendFile(fullLogPath, logLine, (err) => {
         if (err) {
