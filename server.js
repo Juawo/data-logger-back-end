@@ -14,7 +14,7 @@ app.use(express.json())
 app.post('/dados', (req, res) => {
     const { id, Temperature, Umidade, BPM, SpO2 } = req.body;
 
-    if (temperatura === undefined || umidade === undefined) {
+    if (Temperature === undefined || Umidade === undefined) {
         console.log('Recebida requisição com dados ausentes:', req.body);
         // Envia uma resposta de erro para a BitDogLab
         return res.status(400).send('Erro: Dados de temperatura ou umidade ausentes.');
