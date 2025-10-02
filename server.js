@@ -24,7 +24,7 @@ app.post('/dados', (req, res) => {
     const timestamp = new Date().toISOString();
 
     // Formata a linha que será salva no arquivo (formato CSV: data,id,temp,umidade)
-    const logLine = `${timestamp},${deviceId || 'desconhecido'},${temperatura},${umidade}\n`;
+    const logLine = `${timestamp},${id || 'desconhecido'},${temperatura},${umidade}\n`;
 
     fs.appendFile(fullLogPath, logLine, (err) => {
         if (err) {
